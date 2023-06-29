@@ -7,6 +7,7 @@ from kiota_authentication_azure.azure_identity_authentication_provider import (
     AzureIdentityAuthenticationProvider)
 from msgraph import GraphRequestAdapter, GraphServiceClient
 
+# pylint: disable=too-few-public-methods
 class Graph:
     settings: SectionProxy
 
