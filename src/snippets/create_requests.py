@@ -4,9 +4,11 @@
 from msgraph import GraphServiceClient
 from msgraph.generated.users.item.user_item_request_builder import UserItemRequestBuilder
 from msgraph.generated.users.item.messages.messages_request_builder import MessagesRequestBuilder
-from msgraph.generated.users.item.messages.item.message_item_request_builder import MessageItemRequestBuilder
+from msgraph.generated.users.item.messages.item.message_item_request_builder import (
+    MessageItemRequestBuilder)
 from msgraph.generated.users.item.events.events_request_builder import EventsRequestBuilder
-from msgraph.generated.users.item.calendar_view.calendar_view_request_builder import CalendarViewRequestBuilder
+from msgraph.generated.users.item.calendar_view.calendar_view_request_builder import (
+    CalendarViewRequestBuilder)
 from msgraph.generated.groups.groups_request_builder import GroupsRequestBuilder
 from msgraph.generated.models.user import User
 from msgraph.generated.models.message import Message
@@ -85,12 +87,13 @@ class CreateRequests:
         return user
 
     @staticmethod
-    async def make_list_request(graph_client: GraphServiceClient) -> MessageCollectionResponse | None:
+    async def make_list_request(
+        graph_client: GraphServiceClient) -> MessageCollectionResponse | None:
         # <ListRequestSnippet>
         # GET https://graph.microsoft.com/v1.0/me/messages?
         # $select=subject,sender&$filter=subject eq 'Hello world'
 
-        # msgraph.generated.users.item.messages.messages_request_builder.MessagesRequestBuilder
+        # msgraph.generated.users.item.messages.messages_request_builder
         query_params = MessagesRequestBuilder.MessagesRequestBuilderGetQueryParameters(
             select=['subject', 'sender'],
             filter='subject eq \'Hello world\''
@@ -106,7 +109,8 @@ class CreateRequests:
         return messages
 
     @staticmethod
-    async def make_item_by_id_request(graph_client: GraphServiceClient, message_id: str) -> Message | None:
+    async def make_item_by_id_request(
+        graph_client: GraphServiceClient, message_id: str) -> Message | None:
         # <ItemByIdRequestSnippet>
         # GET https://graph.microsoft.com/v1.0/me/messages/{message-id}
         # message_id is a string containing the id property of the message
@@ -116,12 +120,13 @@ class CreateRequests:
         return message
 
     @staticmethod
-    async def make_expand_request(graph_client: GraphServiceClient, message_id: str) -> Message | None:
+    async def make_expand_request(
+        graph_client: GraphServiceClient, message_id: str) -> Message | None:
         # <ExpandRequestSnippet>
         # GET https://graph.microsoft.com/v1.0/me/messages/{message-id}?$expand=attachments
         # message_id is a string containing the id property of the message
 
-        # msgraph.generated.users.item.messages.item.message_item_request_builder.MessageItemRequestBuilder
+        # msgraph.generated.users.item.messages.item.message_item_request_builder
         query_params = MessageItemRequestBuilder.MessageItemRequestBuilderGetQueryParameters(
             expand=['attachments']
         )
@@ -148,7 +153,7 @@ class CreateRequests:
         # <CreateRequestSnippet>
         # POST https://graph.microsoft.com/v1.0/me/calendars
 
-        # msgraph.generated.models.calendar.Calendar
+        # msgraph.generated.models.calendar
         calendar = Calendar()
         calendar.name = 'Volunteer'
 
@@ -165,7 +170,7 @@ class CreateRequests:
         # msgraph.generated.models.team_fun_settings.TeamFunSettings
         fun_settings = TeamFunSettings()
         fun_settings.allow_giphy = True
-        # msgraph.generated.models.giphy_rating_type.GiphyRatingType
+        # msgraph.generated.models.giphy_rating_type
         fun_settings.giphy_content_rating = GiphyRatingType.Strict
 
         # msgraph.generated.models.team.Team
@@ -177,11 +182,12 @@ class CreateRequests:
         # </UpdateRequestSnippet>
 
     @staticmethod
-    async def make_headers_request(graph_client: GraphServiceClient) -> EventCollectionResponse | None:
+    async def make_headers_request(
+        graph_client: GraphServiceClient) -> EventCollectionResponse | None:
         # <HeadersRequestSnippet>
         # GET https://graph.microsoft.com/v1.0/me/events
 
-        # msgraph.generated.users.item.events.events_request_builder.EventsRequestBuilder
+        # msgraph.generated.users.item.events.events_request_builder
         config = EventsRequestBuilder.EventsRequestBuilderGetRequestConfiguration(
             headers={ 'Prefer': 'outlook.timezone="Pacific Standard Time"' }
         )
@@ -192,12 +198,13 @@ class CreateRequests:
         return events
 
     @staticmethod
-    async def make_query_parameters_request(graph_client: GraphServiceClient) -> EventCollectionResponse | None:
+    async def make_query_parameters_request(
+        graph_client: GraphServiceClient) -> EventCollectionResponse | None:
         # <QueryParametersRequestSnippet>
         # GET https://graph.microsoft.com/v1.0/me/calendarView?
         # startDateTime=2023-06-14T00:00:00Z&endDateTime=2023-06-15T00:00:00Z
 
-        # msgraph.generated.users.item.calendar_view.calendar_view_request_builder.CalendarViewRequestBuilder
+        # msgraph.generated.users.item.calendar_view.calendar_view_request_builder
         query_params = CalendarViewRequestBuilder.CalendarViewRequestBuilderGetQueryParameters(
             start_date_time='2023-06-14T00:00:00Z',
             end_date_time='2023-06-15T00:00:00Z'
