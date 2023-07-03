@@ -10,9 +10,7 @@ from azure.identity.aio import (
     ClientSecretCredential,
     CertificateCredential,
     OnBehalfOfCredential)
-from kiota_authentication_azure.azure_identity_authentication_provider import (
-    AzureIdentityAuthenticationProvider)
-from msgraph import GraphRequestAdapter, GraphServiceClient
+from msgraph import GraphServiceClient
 
 class CreateClients:
     @staticmethod
@@ -42,12 +40,7 @@ class CreateClients:
             redirect_uri=redirect_uri,
             client_secret=client_secret)
 
-        # kiota_authentication_azure.azure_identity_authentication_provider
-        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes) # type: ignore
-
-        adapter = GraphRequestAdapter(auth_provider)
-
-        graph_client = GraphServiceClient(adapter)
+        graph_client = GraphServiceClient(credential, scopes) # type: ignore
         # </AuthorizationCodeSnippet>
 
         return graph_client
@@ -72,12 +65,7 @@ class CreateClients:
             client_id=client_id,
             client_secret=client_secret)
 
-        # kiota_authentication_azure.azure_identity_authentication_provider
-        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes) # type: ignore
-
-        adapter = GraphRequestAdapter(auth_provider)
-
-        graph_client = GraphServiceClient(adapter)
+        graph_client = GraphServiceClient(credential, scopes) # type: ignore
         # </ClientSecretSnippet>
 
         return graph_client
@@ -102,12 +90,7 @@ class CreateClients:
             client_id=client_id,
             certificate_path=certificate_path)
 
-        # kiota_authentication_azure.azure_identity_authentication_provider
-        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes) # type: ignore
-
-        adapter = GraphRequestAdapter(auth_provider)
-
-        graph_client = GraphServiceClient(adapter)
+        graph_client = GraphServiceClient(credential, scopes) # type: ignore
         # </ClientCertificateSnippet>
 
         return graph_client
@@ -135,12 +118,7 @@ class CreateClients:
             client_secret=client_secret,
             user_assertion=obo_token)
 
-        # kiota_authentication_azure.azure_identity_authentication_provider
-        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes) # type: ignore
-
-        adapter = GraphRequestAdapter(auth_provider)
-
-        graph_client = GraphServiceClient(adapter)
+        graph_client = GraphServiceClient(credential, scopes) # type: ignore
         # </OnBehalfOfSnippet>
 
         return graph_client
@@ -162,12 +140,7 @@ class CreateClients:
             tenant_id=tenant_id,
             client_id=client_id)
 
-        # kiota_authentication_azure.azure_identity_authentication_provider
-        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
-
-        adapter = GraphRequestAdapter(auth_provider)
-
-        graph_client = GraphServiceClient(adapter)
+        graph_client = GraphServiceClient(credential, scopes)
         # </DeviceCodeSnippet>
 
         return graph_client
@@ -191,12 +164,7 @@ class CreateClients:
             client_id=client_id,
             redirect_uri=redirect_uri)
 
-        # kiota_authentication_azure.azure_identity_authentication_provider
-        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
-
-        adapter = GraphRequestAdapter(auth_provider)
-
-        graph_client = GraphServiceClient(adapter)
+        graph_client = GraphServiceClient(credential, scopes)
         # </InteractiveSnippet>
 
         return graph_client
@@ -224,12 +192,7 @@ class CreateClients:
             username=username,
             password=password)
 
-        # kiota_authentication_azure.azure_identity_authentication_provider
-        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
-
-        adapter = GraphRequestAdapter(auth_provider)
-
-        graph_client = GraphServiceClient(adapter)
+        graph_client = GraphServiceClient(credential, scopes)
         # </UserNamePasswordSnippet>
 
         return graph_client

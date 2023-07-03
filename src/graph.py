@@ -3,9 +3,7 @@
 
 from configparser import SectionProxy
 from azure.identity import DeviceCodeCredential
-from kiota_authentication_azure.azure_identity_authentication_provider import (
-    AzureIdentityAuthenticationProvider)
-from msgraph import GraphRequestAdapter, GraphServiceClient
+from msgraph import GraphServiceClient
 
 # pylint: disable=too-few-public-methods
 class Graph:
@@ -20,7 +18,5 @@ class Graph:
         graph_scopes = self.settings['graphUserScopes'].split(' ')
 
         credential = DeviceCodeCredential(client_id, tenant_id = tenant_id)
-        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=graph_scopes)
-        adapter = GraphRequestAdapter(auth_provider)
-        client = GraphServiceClient(adapter)
+        client = GraphServiceClient(credential, graph_scopes)
         return client
