@@ -7,12 +7,12 @@ from msgraph import GraphServiceClient, GraphRequestAdapter
 from msgraph_core import GraphClientFactory
 from kiota_authentication_azure.azure_identity_authentication_provider import (
     AzureIdentityAuthenticationProvider)
-from httpx import AsyncClient;
+from httpx import AsyncClient
 from middleware.custom_middleware import CustomMiddleware
 
 class CustomClients:
     @staticmethod
-    def createWithCustomMiddleware(
+    def create_with_custom_middleware(
         credential: TokenCredential, scopes: List[str]) -> GraphServiceClient:
         # <CustomMiddlewareSnippet>
         # Create an authentication provider
@@ -42,7 +42,7 @@ class CustomClients:
         return graph_client
 
     @staticmethod
-    def createWithProxy(
+    def create_with_proxy(
         credential: TokenCredential, scopes: List[str]) -> GraphServiceClient:
         # <ProxySnippet>
         # Create an authentication provider
