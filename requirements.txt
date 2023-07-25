@@ -22,7 +22,7 @@ azure-identity==1.13.0
     # via
     #   -r requirements.in
     #   msgraph-sdk
-certifi==2023.5.7
+certifi==2023.7.22
     # via
     #   httpcore
     #   httpx
