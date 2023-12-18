@@ -188,9 +188,8 @@ class CreateRequests:
         # GET https://graph.microsoft.com/v1.0/me/events
 
         # msgraph.generated.users.item.events.events_request_builder
-        config = EventsRequestBuilder.EventsRequestBuilderGetRequestConfiguration(
-            headers={ 'Prefer': 'outlook.timezone="Pacific Standard Time"' }
-        )
+        config = EventsRequestBuilder.EventsRequestBuilderGetRequestConfiguration()
+        config.headers.add('Prefer', 'outlook.timezone="Pacific Standard Time"')
 
         events = await graph_client.me.events.get(config)
         # </HeadersRequestSnippet>

@@ -3,6 +3,8 @@
         "Entra",
         "giphy",
         "httpx",
-        "MSRC"
+        "MSRC",
+        "pylint",
+        "pyright"
     ]
 }
