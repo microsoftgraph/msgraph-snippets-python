@@ -45,20 +45,28 @@ class CustomClients:
     def create_with_proxy(
         credential: TokenCredential, scopes: List[str]) -> GraphServiceClient:
         # <ProxySnippet>
+        # Proxy URLs
+        proxies = {
+            'http': 'http://proxy-url',
+            'https': 'http://proxy-url',
+        }
+        
         # Create an authentication provider
         # credential is one of the credential classes from azure.identity
         # scopes is an array of permission scope strings
-        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
+        # proxies is an optional dict containing proxies configuration in requests format
+        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes, proxies=proxies)
 
-        # Proxy URLs
-        proxies = {
-            'http://': 'http://proxy-url',
-            'https://': 'http://proxy-url',
+        # HTTPX Proxy URLs
+        httpx_proxies = {
+            'http://': proxies['http'],
+            'https://': proxies['https'],
         }
 
         # Create a custom HTTP client with the proxies
         # httpx.AsyncClient
-        http_client = AsyncClient(proxies=proxies) # type: ignore
+        # proxies is an optional dict containing proxies configuration in httpx format
+        http_client = AsyncClient(proxies=httpx_proxies) # type: ignore
 
         # Apply the default Graph middleware to the HTTP client
         http_client = GraphClientFactory.create_with_default_middleware(client=http_client)
