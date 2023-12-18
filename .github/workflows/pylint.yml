@@ -15,7 +15,7 @@ jobs:
         python-version: ["3.9", "3.10", "3.11"]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -25,6 +25,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pylint
+        pip install pyright
     - name: Analyzing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
+    - name: Analyzing the code with pyright
+      run: |
+        pyright
