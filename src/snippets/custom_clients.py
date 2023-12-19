@@ -56,7 +56,7 @@ class CustomClients:
         # of the credential classes from azure.identity
         credential = DeviceCodeCredential(
             "client_id", tenant_id = "tenant_id", proxies = proxies)
-        
+
         # Create an authentication provider
         # credential is one of the credential classes from azure.identity
         # scopes is an array of permission scope strings
