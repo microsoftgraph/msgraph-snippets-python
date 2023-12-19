@@ -3,6 +3,7 @@
 
 from typing import List
 from azure.core.credentials import TokenCredential
+from azure.identity import DeviceCodeCredential
 from msgraph import GraphServiceClient, GraphRequestAdapter
 from msgraph_core import GraphClientFactory
 from kiota_authentication_azure.azure_identity_authentication_provider import (
@@ -43,19 +44,24 @@ class CustomClients:
 
     @staticmethod
     def create_with_proxy(
-        credential: TokenCredential, scopes: List[str]) -> GraphServiceClient:
+        scopes: List[str]) -> GraphServiceClient:
         # <ProxySnippet>
         # Proxy URLs
         proxies = {
             'http': 'http://proxy-url',
             'https': 'http://proxy-url',
         }
+
+        # Create a token credential with the proxies. It can be any
+        # of the credential classes from azure.identity
+        credential = DeviceCodeCredential(
+            "client_id", tenant_id = "tenant_id", proxies = proxies)
         
         # Create an authentication provider
         # credential is one of the credential classes from azure.identity
         # scopes is an array of permission scope strings
         # proxies is an optional dict containing proxies configuration in requests format
-        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes, proxies=proxies)
+        auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
 
         # HTTPX Proxy URLs
         httpx_proxies = {
