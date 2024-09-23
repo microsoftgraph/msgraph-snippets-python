@@ -4,7 +4,8 @@
 from azure.identity import InteractiveBrowserCredential
 from kiota_authentication_azure.azure_identity_authentication_provider import (
     AzureIdentityAuthenticationProvider)
-from msgraph import GraphServiceClient, GraphRequestAdapter
+from msgraph.graph_service_client import GraphServiceClient
+from msgraph.graph_request_adapter import GraphRequestAdapter
 from msgraph_core import GraphClientFactory, NationalClouds
 
 # pylint: disable=too-few-public-methods

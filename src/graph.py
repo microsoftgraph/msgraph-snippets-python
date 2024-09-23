@@ -3,7 +3,7 @@
 
 from configparser import SectionProxy
 from azure.identity import DeviceCodeCredential
-from msgraph import GraphServiceClient
+from msgraph.graph_service_client import GraphServiceClient
 
 # pylint: disable=too-few-public-methods
 class Graph:

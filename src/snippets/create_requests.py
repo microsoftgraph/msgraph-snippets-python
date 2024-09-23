@@ -1,7 +1,7 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
-from msgraph import GraphServiceClient
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from msgraph.generated.users.item.user_item_request_builder import UserItemRequestBuilder
 from msgraph.generated.users.item.messages.messages_request_builder import MessagesRequestBuilder
 from msgraph.generated.users.item.messages.item.message_item_request_builder import (
@@ -17,7 +17,7 @@ from msgraph.generated.models.team_fun_settings import TeamFunSettings
 from msgraph.generated.models.giphy_rating_type import GiphyRatingType
 from msgraph.generated.models.message_collection_response import MessageCollectionResponse
 from msgraph.generated.models.event_collection_response import EventCollectionResponse
-from kiota_abstractions.base_request_configuration import RequestConfiguration
+from msgraph.graph_service_client import GraphServiceClient
 
 class CreateRequests:
     @staticmethod
