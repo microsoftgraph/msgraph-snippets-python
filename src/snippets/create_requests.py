@@ -1,12 +1,11 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
-from msgraph import GraphServiceClient
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from msgraph.generated.users.item.user_item_request_builder import UserItemRequestBuilder
 from msgraph.generated.users.item.messages.messages_request_builder import MessagesRequestBuilder
 from msgraph.generated.users.item.messages.item.message_item_request_builder import (
     MessageItemRequestBuilder)
-from msgraph.generated.users.item.events.events_request_builder import EventsRequestBuilder
 from msgraph.generated.users.item.calendar_view.calendar_view_request_builder import (
     CalendarViewRequestBuilder)
 from msgraph.generated.groups.groups_request_builder import GroupsRequestBuilder
@@ -18,6 +17,7 @@ from msgraph.generated.models.team_fun_settings import TeamFunSettings
 from msgraph.generated.models.giphy_rating_type import GiphyRatingType
 from msgraph.generated.models.message_collection_response import MessageCollectionResponse
 from msgraph.generated.models.event_collection_response import EventCollectionResponse
+from msgraph.graph_service_client import GraphServiceClient
 
 class CreateRequests:
     @staticmethod
@@ -37,7 +37,7 @@ class CreateRequests:
             filter='resourceProvisioningOptions/Any(x:x eq \'Team\')'
         )
 
-        config = GroupsRequestBuilder.GroupsRequestBuilderGetRequestConfiguration(
+        config = RequestConfiguration(
             query_parameters=query_params
         )
 
@@ -77,7 +77,7 @@ class CreateRequests:
             select=['displayName', 'jobTitle']
         )
 
-        config = UserItemRequestBuilder.UserItemRequestBuilderGetRequestConfiguration(
+        config = RequestConfiguration(
             query_parameters=query_params
         )
 
@@ -99,7 +99,7 @@ class CreateRequests:
             filter='subject eq \'Hello world\''
         )
 
-        config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfiguration(
+        config = RequestConfiguration(
             query_parameters=query_params
         )
 
@@ -131,7 +131,7 @@ class CreateRequests:
             expand=['attachments']
         )
 
-        config = MessageItemRequestBuilder.MessageItemRequestBuilderGetRequestConfiguration(
+        config = RequestConfiguration(
             query_parameters=query_params
         )
 
@@ -188,7 +188,7 @@ class CreateRequests:
         # GET https://graph.microsoft.com/v1.0/me/events
 
         # msgraph.generated.users.item.events.events_request_builder
-        config = EventsRequestBuilder.EventsRequestBuilderGetRequestConfiguration()
+        config = RequestConfiguration()
         config.headers.add('Prefer', 'outlook.timezone="Pacific Standard Time"')
 
         events = await graph_client.me.events.get(config)
@@ -209,7 +209,7 @@ class CreateRequests:
             end_date_time='2023-06-15T00:00:00Z'
         )
 
-        config = CalendarViewRequestBuilder.CalendarViewRequestBuilderGetRequestConfiguration(
+        config = RequestConfiguration(
             query_parameters=query_params
         )
 

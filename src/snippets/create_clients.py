@@ -10,7 +10,7 @@ from azure.identity.aio import (
     ClientSecretCredential,
     CertificateCredential,
     OnBehalfOfCredential)
-from msgraph import GraphServiceClient
+from msgraph.graph_service_client import GraphServiceClient
 
 class CreateClients:
     @staticmethod

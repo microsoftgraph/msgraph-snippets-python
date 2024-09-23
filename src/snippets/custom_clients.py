@@ -4,7 +4,8 @@
 from typing import List
 from azure.core.credentials import TokenCredential
 from azure.identity import DeviceCodeCredential
-from msgraph import GraphServiceClient, GraphRequestAdapter
+from msgraph.graph_service_client import GraphServiceClient
+from msgraph.graph_request_adapter import GraphRequestAdapter
 from msgraph_core import GraphClientFactory
 from kiota_authentication_azure.azure_identity_authentication_provider import (
     AzureIdentityAuthenticationProvider)
