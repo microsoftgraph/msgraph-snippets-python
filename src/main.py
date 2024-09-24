@@ -6,6 +6,7 @@ import configparser
 from msgraph.generated.models.o_data_errors.o_data_error import ODataError
 from graph import Graph
 from snippets.create_requests import CreateRequests
+from snippets.paging import Paging
 
 async def main():
     # Load settings
@@ -26,6 +27,7 @@ async def main():
         print('Please choose one of the following options:')
         print('0. Exit')
         print('1. Run request samples')
+        print('2. Run paging samples')
 
         try:
             choice = int(input())
@@ -37,6 +39,8 @@ async def main():
                 print('Goodbye...')
             elif choice == 1:
                 await CreateRequests.run_all_samples(user_client)
+            elif choice == 2:
+                await Paging.run_all_samples(user_client)
             else:
                 print('Invalid choice!\n')
         except ODataError as odata_error:
