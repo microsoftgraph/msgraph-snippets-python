@@ -10,7 +10,7 @@ from msgraph_core import GraphClientFactory
 from kiota_authentication_azure.azure_identity_authentication_provider import (
     AzureIdentityAuthenticationProvider)
 from httpx import AsyncClient
-from middleware.custom_middleware import CustomMiddleware
+from snippets.middleware.custom_middleware import CustomMiddleware
 
 class CustomClients:
     @staticmethod

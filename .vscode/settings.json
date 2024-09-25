@@ -4,6 +4,7 @@
         "giphy",
         "httpx",
         "MSRC",
+        "onedrive",
         "pylint",
         "pyright"
     ]

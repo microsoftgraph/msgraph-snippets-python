@@ -11,7 +11,7 @@
             "program": "${workspaceFolder}/src/main.py",
             "cwd": "${workspaceFolder}/src",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": false
         }
     ]
 }
