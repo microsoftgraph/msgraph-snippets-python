@@ -148,7 +148,7 @@ typing-extensions==4.12.2
     #   azure-identity
     #   multidict
     #   opentelemetry-sdk
-urllib3==2.2.3
+urllib3==2.5.0
     # via requests
 wrapt==1.16.0
     # via deprecated
