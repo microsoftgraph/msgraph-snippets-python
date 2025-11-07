@@ -1,10 +1,12 @@
 {
     "cSpell.words": [
+        "calendarview",
         "Entra",
         "giphy",
         "httpx",
         "MSRC",
         "pylint",
-        "pyright"
+        "pyright",
+        "timespec"
     ]
 }

@@ -9,6 +9,7 @@ from httpx import Request, Response, AsyncBaseTransport
 class CustomMiddleware(BaseMiddleware):
     async def send(self, request: Request, transport: AsyncBaseTransport) -> Response:
         print(request.method, request.url)
+        print(request.content.decode())
         response = await super().send(request, transport)
         return response
 # </CustomMiddlewareSnippet>

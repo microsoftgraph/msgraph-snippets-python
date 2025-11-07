@@ -40,3 +40,18 @@ You can set these values directly in [config.cfg](src/config.cfg), or you can cr
 ## Code of conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+```json
+[
+    {
+        "id": "cbd979a7-60cf-400a-a1e4-d298cf3603c4",
+        "url": "https://graph.microsoft.com/v1.0/me",
+        "depends_on": []
+    },
+    {
+        "id": "756960d4-3b04-431b-958f-3d7130f2d323",
+        "url": "https://graph.microsoft.com/v1.0/me/calendarView?endDateTime=2024-10-05T00%3A00%3A00&startDateTime=2024-10-04T00%3A00%3A00",
+        "depends_on": []
+    }
+]
+```

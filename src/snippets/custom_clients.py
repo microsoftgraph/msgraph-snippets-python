@@ -5,12 +5,12 @@ from typing import List
 from azure.core.credentials import TokenCredential
 from azure.identity import DeviceCodeCredential
 from msgraph.graph_service_client import GraphServiceClient
-from msgraph.graph_request_adapter import GraphRequestAdapter
+from msgraph.graph_request_adapter import GraphRequestAdapter, options as GraphRequestAdapterOptions
 from msgraph_core import GraphClientFactory
-from kiota_authentication_azure.azure_identity_authentication_provider import (
+from msgraph_core.authentication.azure_identity_authentication_provider import (
     AzureIdentityAuthenticationProvider)
 from httpx import AsyncClient
-from middleware.custom_middleware import CustomMiddleware
+from snippets.middleware.custom_middleware import CustomMiddleware
 
 class CustomClients:
     @staticmethod
@@ -24,11 +24,12 @@ class CustomClients:
 
         # Get default middleware
         # msgraph_core.GraphClientFactory
-        middleware = GraphClientFactory.get_default_middleware(options=None)
+        # from msgraph.graph_request_adapter import options as GraphRequestAdapterOptions
+        middleware = GraphClientFactory.get_default_middleware(GraphRequestAdapterOptions)
 
         # Add custom middleware
         # Implement a custom middleware by extending the BaseMiddleware class
-        # https://github.com/microsoft/kiota-http-go/blob/main/kiota_http/middleware/middleware.py
+        # https://github.com/microsoft/kiota-http-python/blob/main/kiota_http/middleware/middleware.py
         middleware.append(CustomMiddleware())
 
         # Create an HTTP client with the middleware
