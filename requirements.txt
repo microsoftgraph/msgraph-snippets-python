@@ -70,7 +70,7 @@ idna==3.10
     #   yarl
 importlib-metadata==8.4.0
     # via opentelemetry-api
-microsoft-kiota-abstractions==1.9.2
+microsoft-kiota-abstractions==1.9.10
     # via
     #   microsoft-kiota-authentication-azure
     #   microsoft-kiota-http
@@ -81,7 +81,7 @@ microsoft-kiota-abstractions==1.9.2
     #   msgraph-core
 microsoft-kiota-authentication-azure==1.9.2
     # via msgraph-core
-microsoft-kiota-http==1.9.2
+microsoft-kiota-http==1.9.9
     # via msgraph-core
 microsoft-kiota-serialization-form==1.9.2
     # via msgraph-sdk
