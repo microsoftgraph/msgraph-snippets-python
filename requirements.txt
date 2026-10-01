@@ -150,7 +150,7 @@ typing-extensions==4.15.0
     #   multidict
     #   opentelemetry-sdk
     #   pyjwt
-urllib3==2.7.0
+urllib3==2.8.0
     # via requests
 wrapt==1.16.0
     # via deprecated
