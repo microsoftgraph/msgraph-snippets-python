@@ -1,7 +1,7 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
-from azure.identity import InteractiveBrowserCredential
+from azure.identity import AzureAuthorityHosts, InteractiveBrowserCredential
 from kiota_authentication_azure.azure_identity_authentication_provider import (
     AzureIdentityAuthenticationProvider)
 from msgraph.graph_service_client import GraphServiceClient
@@ -16,6 +16,7 @@ class NationalCloudClients:
         scopes = ['https://graph.microsoft.us/.default']
 
         credential = InteractiveBrowserCredential(
+            authority=AzureAuthorityHosts.AZURE_GOVERNMENT,
             tenant_id='YOUR_TENANT_ID',
             client_id='YOUR_CLIENT_ID',
             redirect_uri='YOUR_REDIRECT_URI')
@@ -28,6 +29,7 @@ class NationalCloudClients:
             host=NationalClouds.US_GOV)
 
         adapter = GraphRequestAdapter(auth_provider, http_client)
+        adapter.base_url = 'https://graph.microsoft.us/v1.0'
 
         graph_client = GraphServiceClient(request_adapter=adapter)
         # </NationalCloudSnippet>
